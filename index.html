@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>نظام إدارة النقل المدرسي والرحلات | أحمد الزناتي</title>
-<meta name="description" content="برنامج متكامل لشركات الاتوبيسات: خطوط الطلاب، الاشتراكات، الرحلات، الكاشير، الحسابات والمخازن، مع نسخة تجريبية 15 يوماً.">
+<title>نظام إدارة النقل والرحلات | أحمد الزناتي</title>
+<meta name="description" content="برنامج متكامل لإدارة النقل المدرسي والجامعي ونقل الموظفين والرحلات، مع إدارة الأسطول والركاب والاشتراكات والكاشير والحسابات والمخازن.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#F6F8FA;--surface:#FFFFFF;--ink:#12263A;--muted:#46586A;--line:#D8DFE6;
   --yellow:#F6B100;--on-yellow:#12263A;--band:#12263A;--on-band:#F2F5F8;--band-muted:#B5C3D1;
-  --display:'Reem Kufi','IBM Plex Sans Arabic',sans-serif;--body:'IBM Plex Sans Arabic',Tahoma,sans-serif;
+  --display:'Noto Sans Arabic',Tahoma,sans-serif;--body:'Noto Sans Arabic',Tahoma,sans-serif;
   color-scheme:light;
   box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
@@ -41,7 +41,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:va
 nav{display:flex;gap:18px;margin-inline-start:auto;font-size:.95rem}
 nav a{text-decoration:none;color:var(--muted);padding:6px 2px}
 nav a:hover{color:var(--ink)}
-.btn{display:inline-block;background:var(--yellow);color:var(--on-yellow);font:700 1rem var(--display);padding:12px 24px;border-radius:8px;border:0;text-decoration:none;cursor:pointer}
+.btn{display:inline-block;background:var(--yellow);color:var(--on-yellow);font:700 1rem var(--display);padding:12px 24px;border-radius:8px;border:0;text-decoration:none;cursor:pointer;text-align:center}
 .btn:hover{filter:brightness(1.06)}
 .btn.line{background:transparent;color:var(--ink);border:2px solid var(--ink)}
 @media(max-width:760px){nav{display:none}.bar .btn{margin-inline-start:auto;padding:9px 16px}}
@@ -103,16 +103,54 @@ footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);fo
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 @media(max-width:860px){.contact{grid-template-columns:1fr}section{padding-block:52px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* screenshots slider */
+.screenshots{background:var(--paper)}
+.slider{margin-top:30px;max-width:1000px;margin-inline:auto}
+.slider-window{position:relative;overflow:hidden;background:var(--band);border:1px solid var(--line);border-radius:16px;min-height:260px}
+.slide{display:none;margin:0;text-align:center}
+.slide.active{display:block;animation:slideFade .35s ease}
+.slide img{display:block;width:100%;max-height:560px;object-fit:contain;margin-inline:auto}
+@keyframes slideFade{from{opacity:.4}to{opacity:1}}
+.slider-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:18px}
+.slider-btn{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--ink);cursor:pointer;font-size:1.1rem}
+.slider-btn:hover{background:var(--yellow);color:var(--on-yellow)}
+.slider-dots{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+.slider-dot{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:var(--line);cursor:pointer}
+.slider-dot.active{background:var(--yellow);transform:scale(1.25)}
+.slider-counter{margin:10px auto 0;text-align:center;color:var(--muted);font-size:.9rem}
+/* download section */
+.download-section{background:var(--band);color:var(--on-band)}
+.download-content{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center}
+.download-section .lead{color:var(--band-muted)}
+.download-label{display:inline-block;background:var(--yellow);color:var(--on-yellow);padding:4px 14px;border-radius:50px;font-size:.85rem;font-weight:700;margin-bottom:14px}
+.download-details{padding-inline-start:22px;color:var(--band-muted);line-height:2.1;margin:18px 0 24px}
+.download-btn{font-size:1.1rem;padding:15px 28px}
+.download-btn span{margin-inline-end:8px;font-size:1.25rem}
+.download-note{color:var(--band-muted);font-size:.85rem;margin-top:14px}
+.download-visual{min-height:260px;border:1px solid #2B4156;border-radius:18px;background:#192E42;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:25px;text-align:center}
+.download-icon{width:58px;height:58px;display:grid;place-items:center;background:var(--yellow);color:var(--on-yellow);border-radius:14px;font-size:2rem;margin-bottom:12px}
+.download-visual strong{font:700 4rem var(--display);color:var(--yellow);line-height:1.2}
+.download-visual span{font-weight:600;font-size:1.1rem}
+.download-visual small{color:var(--band-muted);margin-top:16px;direction:ltr}
+@media(max-width:760px){.download-content{grid-template-columns:1fr}.download-visual{min-height:210px}.slide img{max-height:350px}}
+@media(prefers-reduced-motion:reduce){.slide.active{animation:none}}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap bar">
-    <a class="brand" href="#top"><i aria-hidden="true"></i>إدارة النقل المدرسي والرحلات</a>
+    <a class="brand" href="#top"><i aria-hidden="true"></i>إدارة النقل والرحلات</a>
     <nav aria-label="أقسام الموقع">
-      <a href="#features">المزايا</a><a href="#safety">السلامة</a><a href="#trial">التجربة</a><a href="#plans">الباقات</a><a href="#contact">التواصل</a>
+      <a href="#features">المزايا</a>
+      <a href="#screenshots">صور البرنامج</a>
+      <a href="#safety">السلامة</a>
+      <a href="#trial">التجربة</a>
+      <a href="#download">تحميل البرنامج</a>
+      <a href="#plans">الباقات</a>
+      <a href="#contact">التواصل</a>
     </nav>
-    <a class="btn" href="#contact">اطلب نسخة تجريبية</a>
+    <a class="btn" href="#download">تحميل النسخة التجريبية</a>
   </div>
 </header>
 
@@ -120,22 +158,22 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 <section class="hero">
   <div class="wrap">
     <div>
-      <h1>كل خطوط الطلاب والرحلات وحساباتك في برنامج واحد</h1>
-      <p class="lead">برنامج لشركات ومكاتب الاتوبيسات: أسطول وسائقون، اشتراكات طلاب، رحلات وعروض أسعار، كاشير ومحاسبة ومخازن. يعمل بالعربية بالكامل وبدون إنترنت.</p>
+      <h1>كل خطوط النقل والركاب والرحلات وحساباتك في برنامج واحد</h1>
+      <p class="lead">برنامج لشركات ومؤسسات النقل والمدارس والجامعات: إدارة الأسطول والسائقين، نقل الطلاب والموظفين، الخطوط والاشتراكات والرحلات وعروض الأسعار والكاشير والحسابات والمخازن. يعمل بالعربية بالكامل وبدون إنترنت.</p>
       <div class="row">
-        <a class="btn" href="#contact">اطلب نسخة تجريبية 15 يوماً</a>
-        <a class="btn line" href="#features">شاهد المزايا</a>
+        <a class="btn" href="#download">تحميل النسخة التجريبية</a>
+        <a class="btn line" href="#screenshots">استعرض صور البرنامج</a>
       </div>
-      <p class="note">تطوير أحمد الزناتي. نسخة ويندوز للإدارة والكاشير، وتطبيق أندرويد للسائق والمشرف وولي الأمر في مرحلة لاحقة.</p>
+      <p class="note">تطوير أحمد الزناتي. نسخة ويندوز للإدارة والكاشير، مع إمكانية إضافة تطبيق أندرويد للسائق والمشرف والركاب أو جهات التواصل في مرحلة لاحقة.</p>
     </div>
-    <div class="route" role="img" aria-label="رسم توضيحي لخط اتوبيس يمر بمحطات تجميع حتى المدرسة">
+    <div class="route" role="img" aria-label="رسم توضيحي لخط نقل يمر بمحطات تجميع حتى جهة الوصول">
       <svg viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg">
         <path id="road" d="M400 200 C 330 200, 330 120, 250 120 S 150 60, 50 60" fill="none" stroke="#2B4156" stroke-width="30" stroke-linecap="round"/>
         <path d="M400 200 C 330 200, 330 120, 250 120 S 150 60, 50 60" fill="none" stroke="#F6B100" stroke-width="3" stroke-dasharray="12 12" stroke-linecap="round"/>
-        <g fill="#F2F5F8" font-size="14" font-family="IBM Plex Sans Arabic,Tahoma,sans-serif" text-anchor="middle">
+        <g fill="#F2F5F8" font-size="14" font-family="Noto Sans Arabic,Tahoma,sans-serif" text-anchor="middle">
           <circle cx="400" cy="200" r="9" fill="#F6B100"/><text x="400" y="235">محطة الحي</text>
           <circle cx="250" cy="120" r="9" fill="#F6B100"/><text x="250" y="155">محطة 2</text>
-          <rect x="30" y="40" width="40" height="40" rx="6" fill="#F2F5F8"/><text x="50" y="100">المدرسة</text>
+          <rect x="30" y="40" width="40" height="40" rx="6" fill="#F2F5F8"/><text x="50" y="100">الوجهة</text>
         </g>
         <g id="bus">
           <rect x="-20" y="-12" width="40" height="24" rx="6" fill="#F6B100"/>
@@ -144,23 +182,62 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
           <animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#road"/></animateMotion>
         </g>
       </svg>
-      <small>مثال توضيحي: خط يجمع الطلاب من المحطات حتى المدرسة، مع تسجيل الصعود والنزول.</small>
+      <small>مثال توضيحي: خط نقل يمر بمحطات التجميع، مع تسجيل صعود الركاب ونزولهم.</small>
+    </div>
+  </div>
+</section>
+
+<!-- معرض صور البرنامج: ضع صورك داخل مجلد screenshots بالأسماء الموضحة -->
+<section id="screenshots" class="screenshots">
+  <div class="wrap">
+    <h2>شاهد صور البرنامج</h2>
+    <p class="lead">لقطات فعلية من شاشات نظام إدارة النقل والرحلات.</p>
+    <div class="slider" aria-label="صور من واجهات البرنامج">
+      <div class="slider-window">
+        <figure class="slide active">
+          <img src="screenshots/01-dashboard.webp" alt="لقطة شاشة من لوحة البرنامج الرئيسية" loading="eager">
+        </figure>
+        <figure class="slide">
+          <img src="screenshots/02-students.webp" alt="إدارة بيانات الطلاب والركاب" loading="lazy">
+        </figure>
+        <figure class="slide">
+          <img src="screenshots/03-routes.webp" alt="إدارة خطوط النقل ومحطات التجميع" loading="lazy">
+        </figure>
+        <figure class="slide">
+          <img src="screenshots/04-subscriptions.webp" alt="إدارة الاشتراكات والتحصيل" loading="lazy">
+        </figure>
+        <figure class="slide">
+          <img src="screenshots/05-trips.webp" alt="إدارة الرحلات والحجوزات" loading="lazy">
+        </figure>
+        <figure class="slide">
+          <img src="screenshots/06-cashier.webp" alt="واجهة الكاشير" loading="lazy">
+        </figure>
+        <figure class="slide">
+          <img src="screenshots/07-reports.webp" alt="تقارير البرنامج" loading="lazy">
+        </figure>
+      </div>
+      <div class="slider-controls">
+        <button type="button" class="slider-btn" id="prevSlide" aria-label="الصورة السابقة">❯</button>
+        <div class="slider-dots" id="sliderDots" aria-label="اختيار الصورة"></div>
+        <button type="button" class="slider-btn" id="nextSlide" aria-label="الصورة التالية">❮</button>
+      </div>
+      <p class="slider-counter" id="sliderCounter" aria-live="polite"></p>
     </div>
   </div>
 </section>
 
 <section id="features">
   <div class="wrap">
-    <h2>ما الذي يديره البرنامج</h2>
-    <p class="lead">وحدات مترابطة، وكل عملية تحصيل أو صرف تنعكس تلقائياً في الحسابات.</p>
+    <h2>كل عمليات النقل والإدارة في مكان واحد</h2>
+    <p class="lead">وحدات مترابطة لإدارة المدارس والجامعات والشركات، مع ربط عمليات التحصيل والصرف بالحسابات.</p>
     <div class="mods">
-      <div class="mod"><h3>الأسطول والصيانة</h3><p>بيانات الاتوبيس، تنبيهات التراخيص والتأمين قبل انتهائها بـ 30 و15 و7 أيام، أوامر الصيانة، الوقود، وربحية كل اتوبيس.</p></div>
-      <div class="mod"><h3>الطلاب والخطوط</h3><p>ملف الطالب وولي الأمر، محطات الصعود والنزول، توزيع الطلاب على الخطوط ومنع تجاوز سعة الاتوبيس.</p></div>
-      <div class="mod"><h3>الاشتراكات والتحصيل</h3><p>اشتراكات شهرية وفصلية وسنوية، خصم الإخوة، التقسيط، الغرامات، وتنبيه المتأخرين في السداد.</p></div>
-      <div class="mod"><h3>الرحلات والحجوزات</h3><p>طلب الرحلة، عرض سعر قابل للطباعة، عقد وحجز مؤكد، ومنع تعارض الاتوبيس والسائق في نفس الوقت.</p></div>
+      <div class="mod"><h3>الأسطول والصيانة</h3><p>بيانات الأتوبيس، تنبيهات التراخيص والتأمين قبل انتهائها بـ 30 و15 و7 أيام، أوامر الصيانة، الوقود، وربحية كل أتوبيس.</p></div>
+      <div class="mod"><h3>الركاب وخطوط النقل</h3><p>ملفات الطلاب والموظفين والركاب، بيانات جهة التواصل عند الحاجة، محطات الصعود والنزول، وتوزيع الركاب على الخطوط دون تجاوز سعة الأتوبيس.</p></div>
+      <div class="mod"><h3>الاشتراكات والتحصيل</h3><p>اشتراكات شهرية وفصلية وسنوية للطلاب والموظفين والجهات، مع التقسيط والخصومات والغرامات وتنبيه المتأخرين في السداد.</p></div>
+      <div class="mod"><h3>الرحلات والحجوزات</h3><p>طلب الرحلة، عرض سعر قابل للطباعة، عقد وحجز مؤكد، ومنع تعارض الأتوبيس والسائق في نفس الوقت.</p></div>
       <div class="mod"><h3>الكاشير</h3><p>إيصالات حرارية أو A4، وردية بتقفيل وجرد، مرتجعات بموافقة مشرف، وتقرير يومي لكل كاشير.</p></div>
       <div class="mod"><h3>الحسابات</h3><p>دليل حسابات وقيود يومية وخزينة وبنوك وضريبة قيمة مضافة، وميزان مراجعة وقوائم مالية مع إقفال الفترات.</p></div>
-      <div class="mod"><h3>المخازن وقطع الغيار</h3><p>أصناف بالباركود، أذون صرف على اتوبيس محدد، حد أدنى للطلب، وجرد دوري.</p></div>
+      <div class="mod"><h3>المخازن وقطع الغيار</h3><p>أصناف بالباركود، أذون صرف على أتوبيس محدد، حد أدنى للطلب، وجرد دوري.</p></div>
       <div class="mod"><h3>الإشعارات والتتبع</h3><p>رسائل SMS وواتساب لأولياء الأمور، وتتبع GPS اختياري يظهر الموقع أثناء الرحلة فقط.</p></div>
     </div>
   </div>
@@ -168,15 +245,15 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
 <section id="safety" class="band">
   <div class="wrap">
-    <h2>السلامة أولاً لأن الركاب أطفال</h2>
-    <p class="lead">البرنامج يمنع الأخطاء المتوقعة قبل أن تحدث، ولا يغني عن إجراءات شركتك ومشرفيك على الأرض.</p>
+    <h2>السلامة أولاً لجميع الركاب</h2>
+    <p class="lead">يساعد البرنامج على تقليل أخطاء التشغيل ومتابعة الركاب والرحلات، مع ضرورة الالتزام بإجراءات السلامة والإشراف الميداني.</p>
     <ul class="safe">
-      <li><b>لا إغلاق للرحلة</b> وفيها طالب صعد ولم يُسجَّل نزوله، مع تنبيه للسائق والمشرف ومدير التشغيل.</li>
-      <li><b>قائمة فحص نهاية الرحلة</b> للتأكد من خلو الاتوبيس، موقّعة بالوقت.</li>
-      <li><b>تنبيه ولي الأمر</b> عند غياب الطالب عن نقطة الصعود أو تأخر الاتوبيس.</li>
-      <li><b>منع تكليف</b> اتوبيس أو سائق منتهي الترخيص أو التأمين أو الفحص الدوري.</li>
-      <li><b>مستلمون مصرّح لهم</b> ورمز تحقق عند التسليم للمراحل الصغيرة.</li>
-      <li><b>سجل الحوادث والأعطال</b> مع أرقام الطوارئ وإشعار المدير وأولياء الأمور.</li>
+      <li><b>لا إغلاق للرحلة</b> وفيها راكب صعد ولم يُسجَّل نزوله، مع تنبيه للسائق والمشرف ومدير التشغيل.</li>
+      <li><b>قائمة فحص نهاية الرحلة</b> للتأكد من خلو الأتوبيس من جميع الركاب، مع تسجيل وقت الفحص واسم المسؤول.</li>
+      <li><b>تنبيه جهة التواصل أو المسؤول</b> عند عدم حضور الراكب في نقطة الصعود أو تأخر الأتوبيس.</li>
+      <li><b>منع تكليف</b> أتوبيس أو سائق منتهي الترخيص أو التأمين أو الفحص الدوري.</li>
+      <li><b>تسليم آمن</b> للطلاب القُصّر أو الحالات التي تتطلب تسليماً لشخص مصرح له، مع رمز تحقق عند الحاجة.</li>
+      <li><b>سجل الحوادث والأعطال</b> مع أرقام الطوارئ وإشعار مدير التشغيل والجهات المعنية.</li>
     </ul>
   </div>
 </section>
@@ -184,13 +261,39 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 <section id="trial">
   <div class="wrap">
     <h2>جرّب البرنامج قبل أن تشتريه</h2>
-    <p class="lead">نسخة تجريبية كاملة المزايا بسعة محدودة، وبياناتك لا تضيع عند التفعيل.</p>
+    <p class="lead">نسخة تجريبية تتيح لك اختبار إمكانيات البرنامج ضمن حدود الاستخدام، مع الاحتفاظ ببياناتك عند التفعيل.</p>
     <ol class="steps">
       <li><b>ثبّت وابدأ</b><span>تبدأ المدة تلقائياً عند أول تشغيل، والعدّاد ظاهر في الشاشة الرئيسية.</span></li>
       <li><b>جرّب 15 يوماً</b><span>تنبيه قبل الانتهاء بـ 5 أيام ثم يومين ثم يوم.</span></li>
       <li><b>فعّل بكود الترخيص</b><span>تفعيل أونلاين أو أوفلاين، وكل بيانات التجربة تنتقل كاملة.</span></li>
       <li><b>لم تفعّل؟</b><span>يتحول إلى قراءة فقط، ويبقى التصدير والنسخ الاحتياطي متاحين.</span></li>
     </ol>
+  </div>
+</section>
+
+<!-- غيّر مسار الملف التالي إلى اسم ملف التثبيت الفعلي -->
+<section id="download" class="download-section">
+  <div class="wrap download-content">
+    <div>
+      <span class="download-label">نسخة تجريبية مجانية</span>
+      <h2>ابدأ استخدام البرنامج الآن</h2>
+      <p class="lead">حمّل النسخة التجريبية من نظام إدارة النقل والرحلات، واستكشف إمكانياته لإدارة نقل الطلاب في المدارس والجامعات، ونقل الموظفين، والرحلات.</p>
+      <ul class="download-details">
+        <li>تجربة مجانية لمدة 15 يوماً.</li>
+        <li>تثبيت مباشر على أجهزة Windows.</li>
+        <li>تجربة الوحدات المتاحة وفق حدود النسخة التجريبية.</li>
+      </ul>
+      <a class="btn download-btn" href="downloads/Transport-Trial-Setup.exe" download>
+        <span aria-hidden="true">⬇</span> تحميل النسخة التجريبية
+      </a>
+      <p class="download-note">بعد التحميل، شغّل ملف التثبيت واتبع التعليمات الظاهرة على الشاشة.</p>
+    </div>
+    <div class="download-visual" aria-hidden="true">
+      <div class="download-icon">↓</div>
+      <strong>15</strong>
+      <span>يوماً للتجربة المجانية</span>
+      <small>School Transport Management System</small>
+    </div>
   </div>
 </section>
 
@@ -202,8 +305,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       <thead><tr><th>الباقة</th><th>تشمل</th><th>الحدود</th></tr></thead>
       <tbody>
         <tr><td><span class="tag">مجانية</span> تجريبية</td><td>كل الوحدات الأساسية</td><td>15 يوماً وكميات صغيرة</td></tr>
-        <tr><td>أساسية</td><td>الطلاب والاشتراكات والكاشير والتقارير</td><td>حتى 5 اتوبيسات و300 طالب</td></tr>
-        <tr><td>احترافية</td><td>الأساسية مع الرحلات والحسابات والمخازن والصيانة</td><td>حتى 25 اتوبيساً وعدد طلاب مفتوح</td></tr>
+        <tr><td>أساسية</td><td>الركاب والاشتراكات والكاشير والتقارير</td><td>حتى 5 أتوبيسات و300 راكب</td></tr>
+        <tr><td>احترافية</td><td>الأساسية مع الرحلات والحسابات والمخازن والصيانة</td><td>حتى 25 أتوبيساً وعدد ركاب مفتوح</td></tr>
         <tr><td>مؤسسية</td><td>الاحترافية مع تعدد الفروع والتتبع وبوابة أولياء الأمور والفاتورة الإلكترونية</td><td>حسب الاتفاق</td></tr>
       </tbody>
     </table></div>
@@ -212,8 +315,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
 <section id="security">
   <div class="wrap">
-    <h2>أمان وخصوصية لبيانات الطلاب</h2>
-    <p class="lead">بيانات الأطفال ومواقعهم لها متطلبات صريحة في وثيقة المتطلبات: تشفير، صلاحيات على مستوى البيانات، سجل تدقيق، وجمع الحد الأدنى من المعلومات بموافقة ولي الأمر. المتطلبات مبنية على المعايير التالية، والتحقق منها يتم في اختبارات كل إصدار.</p>
+    <h2>أمان وخصوصية بيانات الركاب</h2>
+    <p class="lead">بيانات الركاب ومعلومات المواقع تحتاج إلى حماية واضحة؛ لذلك يراعي تصميم النظام التشفير، وتحديد صلاحيات الوصول، وسجل التدقيق، وجمع البيانات الضرورية فقط، مع مراعاة الموافقات المطلوبة بحسب طبيعة الجهة والركاب. وتُراجع هذه الضوابط ضمن اختبارات كل إصدار.</p>
     <ul class="chips">
       <li>ISO/IEC 25010</li><li>ISO/IEC/IEEE 29148</li><li>ISO/IEC 27001 (ضوابط)</li><li>OWASP ASVS</li><li>NIST SP 800-63B</li><li>PCI DSS</li><li>قانون حماية البيانات الشخصية 151 لسنة 2020</li>
     </ul>
@@ -234,10 +337,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       <label for="p">رقم الهاتف</label>
       <input id="p" name="p" type="tel" inputmode="tel" autocomplete="tel" required>
       <label for="t">نوع نشاطك</label>
-      <select id="t"><option>نقل مدرسي</option><option>رحلات وسياحة</option><option>نقل مدرسي ورحلات</option><option>مالك اتوبيسات</option></select>
+      <select id="t" name="t"><option>نقل مدرسي</option><option>نقل جامعي</option><option>نقل موظفين وشركات</option><option>نقل مدرسي وجامعي وموظفين</option><option>رحلات وسياحة</option><option>مالك أو شركة أتوبيسات</option></select>
       <label for="m">رسالتك</label>
       <textarea id="m" name="m" required></textarea>
-      <div class="err" id="e" role="alert"></div>
+      <div class="err" id="e" role="alert" aria-live="polite"></div>
       <button class="btn" type="submit">أرسل عبر واتساب</button>
     </form>
   </div>
@@ -255,22 +358,77 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 // ضع رقم الواتساب بصيغة دولية بدون + وبدون مسافات (مثال لمصر: 201012345678)
 var WHATSAPP_NUMBER = "201000000000";
 (function(){
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    var a = document.querySelector("animateMotion");
-    if (a) { a.remove(); document.getElementById("bus").setAttribute("transform","translate(400 200)"); }
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var animation = document.querySelector("animateMotion");
+    if (animation) {
+      animation.remove();
+      var bus = document.getElementById("bus");
+      if (bus) bus.setAttribute("transform","translate(400 200)");
+    }
   }
-  var f = document.getElementById("f"), e = document.getElementById("e");
+
+  var f = document.getElementById("f");
+  var e = document.getElementById("e");
   f.addEventListener("submit", function(ev){
     ev.preventDefault();
-    var n = f.n.value.trim(), p = f.p.value.trim(), m = f.m.value.trim();
-    if (!n || !p || !m) { e.textContent = "اكتب الاسم ورقم الهاتف والرسالة ثم أرسل."; return; }
+    var n = f.elements["n"].value.trim();
+    var p = f.elements["p"].value.trim();
+    var m = f.elements["m"].value.trim();
+    if (!n || !p || !m) {
+      e.textContent = "اكتب الاسم ورقم الهاتف والرسالة ثم أرسل.";
+      return;
+    }
+    if (!/^\d{10,15}$/.test(WHATSAPP_NUMBER)) {
+      e.textContent = "يرجى ضبط رقم واتساب المطور داخل إعدادات الصفحة أولاً.";
+      return;
+    }
     e.textContent = "";
-    var text = "السلام عليكم، أنا " + n + "\nالهاتف: " + p + "\nالنشاط: " + f.t.value + "\n\n" + m;
-    var link = document.createElement("a");
-    link.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
-    link.target = "_blank"; link.rel = "noopener";
-    document.body.appendChild(link); link.click(); link.remove();
+    var message = "السلام عليكم، أنا " + n + "\nالهاتف: " + p + "\nالنشاط: " + f.elements["t"].value + "\n\n" + m;
+    var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+    window.open(url, "_blank", "noopener,noreferrer");
   });
+})();
+
+/* التحكم في معرض صور البرنامج */
+(function(){
+  var slider = document.querySelector(".slider");
+  if (!slider) return;
+
+  var slides = Array.from(slider.querySelectorAll(".slide"));
+  var dotsContainer = document.getElementById("sliderDots");
+  var counter = document.getElementById("sliderCounter");
+  var prev = document.getElementById("prevSlide");
+  var next = document.getElementById("nextSlide");
+  if (!slides.length || !dotsContainer || !counter || !prev || !next) return;
+
+  var current = 0;
+  slides.forEach(function(slide, index){
+    var dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "slider-dot";
+    dot.setAttribute("aria-label", "عرض الصورة رقم " + (index + 1));
+    dot.addEventListener("click", function(){ showSlide(index); });
+    dotsContainer.appendChild(dot);
+  });
+
+  var dots = Array.from(dotsContainer.children);
+  function showSlide(index){
+    current = (index + slides.length) % slides.length;
+    slides.forEach(function(slide, i){
+      slide.classList.toggle("active", i === current);
+      slide.setAttribute("aria-hidden", i === current ? "false" : "true");
+    });
+    dots.forEach(function(dot, i){
+      dot.classList.toggle("active", i === current);
+      if (i === current) dot.setAttribute("aria-current", "true");
+      else dot.removeAttribute("aria-current");
+    });
+    counter.textContent = "الصورة " + (current + 1) + " من " + slides.length;
+  }
+
+  prev.addEventListener("click", function(){ showSlide(current - 1); });
+  next.addEventListener("click", function(){ showSlide(current + 1); });
+  showSlide(0);
 })();
 </script>
 </body>
