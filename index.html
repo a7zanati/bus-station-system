@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>نظام إدارة النقل المدرسي والرحلات | أحمد الزناتي</title>
+<meta name="description" content="برنامج متكامل لشركات الاتوبيسات: خطوط الطلاب، الاشتراكات، الرحلات، الكاشير، الحسابات والمخازن، مع نسخة تجريبية 15 يوماً.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F8FA;--surface:#FFFFFF;--ink:#12263A;--muted:#46586A;--line:#D8DFE6;
+  --yellow:#F6B100;--on-yellow:#12263A;--band:#12263A;--on-band:#F2F5F8;--band-muted:#B5C3D1;
+  --display:'Reem Kufi','IBM Plex Sans Arabic',sans-serif;--body:'IBM Plex Sans Arabic',Tahoma,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0E1B28;--surface:#16293A;--ink:#F2F5F8;--muted:#A9B8C6;--line:#2B4156;--band:#091421;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0E1B28;--surface:#16293A;--ink:#F2F5F8;--muted:#A9B8C6;--line:#2B4156;--band:#091421;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.8 var(--body)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:30}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.35;margin:0}
+h2{font-size:clamp(1.6rem,3.2vw,2.3rem);margin-bottom:.4em}
+p{margin:0 0 1em;max-width:62ch}
+section{padding-block:72px}
+.lead{color:var(--muted)}
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:20px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;font:700 1.15rem var(--display);text-decoration:none}
+.brand i{width:34px;height:22px;background:var(--yellow);border-radius:6px 6px 3px 3px;position:relative;display:block}
+.brand i::before,.brand i::after{content:"";position:absolute;bottom:-5px;width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.brand i::before{right:5px}.brand i::after{left:5px}
+nav{display:flex;gap:18px;margin-inline-start:auto;font-size:.95rem}
+nav a{text-decoration:none;color:var(--muted);padding:6px 2px}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--yellow);color:var(--on-yellow);font:700 1rem var(--display);padding:12px 24px;border-radius:8px;border:0;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.06)}
+.btn.line{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+@media(max-width:760px){nav{display:none}.bar .btn{margin-inline-start:auto;padding:9px 16px}}
+/* hero */
+.hero{padding-block:56px 72px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2.1rem,5vw,3.6rem)}
+.hero .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.note{font-size:.9rem;color:var(--muted);margin-top:16px}
+.route{background:var(--band);color:var(--on-band);border-radius:18px;padding:22px}
+.route svg{width:100%;height:auto;display:block}
+.route small{display:block;color:var(--band-muted);font-size:.85rem;margin-top:8px}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+/* modules */
+.mods{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px;margin-top:28px}
+.mod{padding:20px 0;border-top:1px solid var(--line)}
+.mod h3{font-size:1.2rem;margin-bottom:4px}
+.mod p{margin:0;color:var(--muted);font-size:1rem}
+@media(max-width:760px){.mods{grid-template-columns:1fr}}
+/* safety band */
+.band{background:var(--band);color:var(--on-band)}
+.band .lead{color:var(--band-muted)}
+.safe{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px 48px}
+.safe li{padding-inline-start:34px;position:relative}
+.safe li::before{content:"";position:absolute;inset-inline-start:0;top:.45em;width:20px;height:20px;border-radius:50%;background:var(--yellow)}
+.safe li::after{content:"";position:absolute;inset-inline-start:6px;top:.62em;width:5px;height:9px;border:solid var(--on-yellow);border-width:0 2.5px 2.5px 0;transform:rotate(40deg)}
+.safe b{font-family:var(--display);font-weight:700}
+@media(max-width:760px){.safe{grid-template-columns:1fr}}
+/* trial */
+.steps{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--yellow);color:var(--on-yellow);font:700 1.1rem var(--display);margin-bottom:10px}
+.steps b{display:block;font-family:var(--display)}
+.steps span{color:var(--muted);font-size:.95rem}
+@media(max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+/* packages */
+.tw{overflow-x:auto;margin-top:24px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{padding:14px 18px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--display);background:var(--paper)}
+tr:last-child td{border-bottom:0}
+.tag{display:inline-block;background:var(--yellow);color:var(--on-yellow);font-weight:600;font-size:.8rem;padding:1px 10px;border-radius:99px}
+/* standards */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 0;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 14px;font-size:.95rem}
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+form{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px}
+label{display:block;font-weight:600;margin-bottom:6px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:8px;padding:11px 14px;margin-bottom:16px}
+textarea{min-height:130px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--yellow);outline-offset:1px;border-color:var(--ink)}
+.err{color:#B3261E;font-size:.92rem;min-height:1.4em;margin:-6px 0 10px}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .err{color:#FF8A80}}
+.info p{margin-bottom:.6em}
+.info a{font-weight:600}
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+@media(max-width:860px){.contact{grid-template-columns:1fr}section{padding-block:52px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><i aria-hidden="true"></i>إدارة النقل المدرسي والرحلات</a>
+    <nav aria-label="أقسام الموقع">
+      <a href="#features">المزايا</a><a href="#safety">السلامة</a><a href="#trial">التجربة</a><a href="#plans">الباقات</a><a href="#contact">التواصل</a>
+    </nav>
+    <a class="btn" href="#contact">اطلب نسخة تجريبية</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>كل خطوط الطلاب والرحلات وحساباتك في برنامج واحد</h1>
+      <p class="lead">برنامج لشركات ومكاتب الاتوبيسات: أسطول وسائقون، اشتراكات طلاب، رحلات وعروض أسعار، كاشير ومحاسبة ومخازن. يعمل بالعربية بالكامل وبدون إنترنت.</p>
+      <div class="row">
+        <a class="btn" href="#contact">اطلب نسخة تجريبية 15 يوماً</a>
+        <a class="btn line" href="#features">شاهد المزايا</a>
+      </div>
+      <p class="note">تطوير أحمد الزناتي. نسخة ويندوز للإدارة والكاشير، وتطبيق أندرويد للسائق والمشرف وولي الأمر في مرحلة لاحقة.</p>
+    </div>
+    <div class="route" role="img" aria-label="رسم توضيحي لخط اتوبيس يمر بمحطات تجميع حتى المدرسة">
+      <svg viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg">
+        <path id="road" d="M400 200 C 330 200, 330 120, 250 120 S 150 60, 50 60" fill="none" stroke="#2B4156" stroke-width="30" stroke-linecap="round"/>
+        <path d="M400 200 C 330 200, 330 120, 250 120 S 150 60, 50 60" fill="none" stroke="#F6B100" stroke-width="3" stroke-dasharray="12 12" stroke-linecap="round"/>
+        <g fill="#F2F5F8" font-size="14" font-family="IBM Plex Sans Arabic,Tahoma,sans-serif" text-anchor="middle">
+          <circle cx="400" cy="200" r="9" fill="#F6B100"/><text x="400" y="235">محطة الحي</text>
+          <circle cx="250" cy="120" r="9" fill="#F6B100"/><text x="250" y="155">محطة 2</text>
+          <rect x="30" y="40" width="40" height="40" rx="6" fill="#F2F5F8"/><text x="50" y="100">المدرسة</text>
+        </g>
+        <g id="bus">
+          <rect x="-20" y="-12" width="40" height="24" rx="6" fill="#F6B100"/>
+          <rect x="-15" y="-7" width="8" height="8" rx="1" fill="#12263A"/><rect x="-4" y="-7" width="8" height="8" rx="1" fill="#12263A"/><rect x="7" y="-7" width="8" height="8" rx="1" fill="#12263A"/>
+          <circle cx="-10" cy="12" r="4" fill="#12263A"/><circle cx="10" cy="12" r="4" fill="#12263A"/>
+          <animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#road"/></animateMotion>
+        </g>
+      </svg>
+      <small>مثال توضيحي: خط يجمع الطلاب من المحطات حتى المدرسة، مع تسجيل الصعود والنزول.</small>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <h2>ما الذي يديره البرنامج</h2>
+    <p class="lead">وحدات مترابطة، وكل عملية تحصيل أو صرف تنعكس تلقائياً في الحسابات.</p>
+    <div class="mods">
+      <div class="mod"><h3>الأسطول والصيانة</h3><p>بيانات الاتوبيس، تنبيهات التراخيص والتأمين قبل انتهائها بـ 30 و15 و7 أيام، أوامر الصيانة، الوقود، وربحية كل اتوبيس.</p></div>
+      <div class="mod"><h3>الطلاب والخطوط</h3><p>ملف الطالب وولي الأمر، محطات الصعود والنزول، توزيع الطلاب على الخطوط ومنع تجاوز سعة الاتوبيس.</p></div>
+      <div class="mod"><h3>الاشتراكات والتحصيل</h3><p>اشتراكات شهرية وفصلية وسنوية، خصم الإخوة، التقسيط، الغرامات، وتنبيه المتأخرين في السداد.</p></div>
+      <div class="mod"><h3>الرحلات والحجوزات</h3><p>طلب الرحلة، عرض سعر قابل للطباعة، عقد وحجز مؤكد، ومنع تعارض الاتوبيس والسائق في نفس الوقت.</p></div>
+      <div class="mod"><h3>الكاشير</h3><p>إيصالات حرارية أو A4، وردية بتقفيل وجرد، مرتجعات بموافقة مشرف، وتقرير يومي لكل كاشير.</p></div>
+      <div class="mod"><h3>الحسابات</h3><p>دليل حسابات وقيود يومية وخزينة وبنوك وضريبة قيمة مضافة، وميزان مراجعة وقوائم مالية مع إقفال الفترات.</p></div>
+      <div class="mod"><h3>المخازن وقطع الغيار</h3><p>أصناف بالباركود، أذون صرف على اتوبيس محدد، حد أدنى للطلب، وجرد دوري.</p></div>
+      <div class="mod"><h3>الإشعارات والتتبع</h3><p>رسائل SMS وواتساب لأولياء الأمور، وتتبع GPS اختياري يظهر الموقع أثناء الرحلة فقط.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="safety" class="band">
+  <div class="wrap">
+    <h2>السلامة أولاً لأن الركاب أطفال</h2>
+    <p class="lead">البرنامج يمنع الأخطاء المتوقعة قبل أن تحدث، ولا يغني عن إجراءات شركتك ومشرفيك على الأرض.</p>
+    <ul class="safe">
+      <li><b>لا إغلاق للرحلة</b> وفيها طالب صعد ولم يُسجَّل نزوله، مع تنبيه للسائق والمشرف ومدير التشغيل.</li>
+      <li><b>قائمة فحص نهاية الرحلة</b> للتأكد من خلو الاتوبيس، موقّعة بالوقت.</li>
+      <li><b>تنبيه ولي الأمر</b> عند غياب الطالب عن نقطة الصعود أو تأخر الاتوبيس.</li>
+      <li><b>منع تكليف</b> اتوبيس أو سائق منتهي الترخيص أو التأمين أو الفحص الدوري.</li>
+      <li><b>مستلمون مصرّح لهم</b> ورمز تحقق عند التسليم للمراحل الصغيرة.</li>
+      <li><b>سجل الحوادث والأعطال</b> مع أرقام الطوارئ وإشعار المدير وأولياء الأمور.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="trial">
+  <div class="wrap">
+    <h2>جرّب البرنامج قبل أن تشتريه</h2>
+    <p class="lead">نسخة تجريبية كاملة المزايا بسعة محدودة، وبياناتك لا تضيع عند التفعيل.</p>
+    <ol class="steps">
+      <li><b>ثبّت وابدأ</b><span>تبدأ المدة تلقائياً عند أول تشغيل، والعدّاد ظاهر في الشاشة الرئيسية.</span></li>
+      <li><b>جرّب 15 يوماً</b><span>تنبيه قبل الانتهاء بـ 5 أيام ثم يومين ثم يوم.</span></li>
+      <li><b>فعّل بكود الترخيص</b><span>تفعيل أونلاين أو أوفلاين، وكل بيانات التجربة تنتقل كاملة.</span></li>
+      <li><b>لم تفعّل؟</b><span>يتحول إلى قراءة فقط، ويبقى التصدير والنسخ الاحتياطي متاحين.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="plans" style="background:var(--surface);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <h2>الباقات</h2>
+    <p class="lead">الأسعار بالاتفاق حسب حجم الأسطول وعدد الفروع. اطلب عرضاً من نموذج التواصل.</p>
+    <div class="tw"><table>
+      <thead><tr><th>الباقة</th><th>تشمل</th><th>الحدود</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag">مجانية</span> تجريبية</td><td>كل الوحدات الأساسية</td><td>15 يوماً وكميات صغيرة</td></tr>
+        <tr><td>أساسية</td><td>الطلاب والاشتراكات والكاشير والتقارير</td><td>حتى 5 اتوبيسات و300 طالب</td></tr>
+        <tr><td>احترافية</td><td>الأساسية مع الرحلات والحسابات والمخازن والصيانة</td><td>حتى 25 اتوبيساً وعدد طلاب مفتوح</td></tr>
+        <tr><td>مؤسسية</td><td>الاحترافية مع تعدد الفروع والتتبع وبوابة أولياء الأمور والفاتورة الإلكترونية</td><td>حسب الاتفاق</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="security">
+  <div class="wrap">
+    <h2>أمان وخصوصية لبيانات الطلاب</h2>
+    <p class="lead">بيانات الأطفال ومواقعهم لها متطلبات صريحة في وثيقة المتطلبات: تشفير، صلاحيات على مستوى البيانات، سجل تدقيق، وجمع الحد الأدنى من المعلومات بموافقة ولي الأمر. المتطلبات مبنية على المعايير التالية، والتحقق منها يتم في اختبارات كل إصدار.</p>
+    <ul class="chips">
+      <li>ISO/IEC 25010</li><li>ISO/IEC/IEEE 29148</li><li>ISO/IEC 27001 (ضوابط)</li><li>OWASP ASVS</li><li>NIST SP 800-63B</li><li>PCI DSS</li><li>قانون حماية البيانات الشخصية 151 لسنة 2020</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" style="background:var(--surface);border-top:1px solid var(--line)">
+  <div class="wrap contact">
+    <div class="info">
+      <h2>اطلب نسخة تجريبية أو عرض سعر</h2>
+      <p class="lead">اكتب رسالتك وسنفتح لك واتساب برسالة جاهزة تضغط عليها إرسال.</p>
+      <p>المطور: <b>أحمد الزناتي</b></p>
+      <p><a href="https://www.youtube.com/@a7zanati" target="_blank" rel="noopener">قناتي على يوتيوب: شروحات وفيديوهات البرنامج</a></p>
+    </div>
+    <form id="f" novalidate>
+      <label for="n">الاسم</label>
+      <input id="n" name="n" autocomplete="name" required>
+      <label for="p">رقم الهاتف</label>
+      <input id="p" name="p" type="tel" inputmode="tel" autocomplete="tel" required>
+      <label for="t">نوع نشاطك</label>
+      <select id="t"><option>نقل مدرسي</option><option>رحلات وسياحة</option><option>نقل مدرسي ورحلات</option><option>مالك اتوبيسات</option></select>
+      <label for="m">رسالتك</label>
+      <textarea id="m" name="m" required></textarea>
+      <div class="err" id="e" role="alert"></div>
+      <button class="btn" type="submit">أرسل عبر واتساب</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>تطوير أحمد الزناتي</span>
+    <a href="https://www.youtube.com/@a7zanati" target="_blank" rel="noopener">youtube.com/@a7zanati</a>
+  </div>
+</footer>
+
+<script>
+// ضع رقم الواتساب بصيغة دولية بدون + وبدون مسافات (مثال لمصر: 201012345678)
+var WHATSAPP_NUMBER = "201000000000";
+(function(){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var a = document.querySelector("animateMotion");
+    if (a) { a.remove(); document.getElementById("bus").setAttribute("transform","translate(400 200)"); }
+  }
+  var f = document.getElementById("f"), e = document.getElementById("e");
+  f.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var n = f.n.value.trim(), p = f.p.value.trim(), m = f.m.value.trim();
+    if (!n || !p || !m) { e.textContent = "اكتب الاسم ورقم الهاتف والرسالة ثم أرسل."; return; }
+    e.textContent = "";
+    var text = "السلام عليكم، أنا " + n + "\nالهاتف: " + p + "\nالنشاط: " + f.t.value + "\n\n" + m;
+    var link = document.createElement("a");
+    link.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
+    link.target = "_blank"; link.rel = "noopener";
+    document.body.appendChild(link); link.click(); link.remove();
+  });
+})();
+</script>
+</body>
+</html>
